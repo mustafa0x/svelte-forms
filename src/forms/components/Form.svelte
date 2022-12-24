@@ -4,8 +4,8 @@
     {...getPropsFromContainer(components.layout)}>
     <div slot=fields>
       <svelte:component
-        this={getComponent(schema, components.fields[schema.type], schema.type)}
-        props={getProps(schema, components.fields[schema.type], schema.type)}
+        this={cmp}
+        props={props}
         {components}
         {schema}
         bind:value
@@ -69,4 +69,6 @@ $: if (components && validator) {
         ],
     }
 }
+$: cmp = getComponent(schema, components.fields[schema.type], schema.type)
+$: props = getProps(schema, components.fields[schema.type], schema.type)
 </script>

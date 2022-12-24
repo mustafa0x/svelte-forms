@@ -59,3 +59,8 @@ form .item {
   display: flex; 
   align-items: center;
 }
+
+.field {
+  border: 1px solid #aaa;
+  padding: 0.5rem;
+}

@@ -2,8 +2,8 @@
   <Wrap {schema} {errors} component={components.wrapper}>
     {#each Object.entries(schema.properties) as [key, propSchema] (key)}
       <svelte:component
-        this={getComponent(propSchema, components.fields[propSchema.type], 'field')}
-        props={getProps(propSchema, components.fields[propSchema.type], 'field')}
+        this={map[key][0]}
+        props={map[key][1]}
         {components}
         schema={propSchema}
         bind:value={value[key]}
@@ -26,4 +26,11 @@ export let components = p.components
 $: if (schema && value == null) {
     value = defaultValue(schema, value)
 }
+
+const map = Object.fromEntries(
+    Object.entries(schema.properties).map(([key, propSchema]) => [key, [
+        getComponent(propSchema, components.fields[propSchema.type], 'field'),
+        getProps(propSchema, components.fields[propSchema.type], 'field'),
+    ]])
+)
 </script>

@@ -1,12 +1,6 @@
-{#if schema && component}
-  <svelte:component
-    this={getComponent(schema, component, key)}
-    {...getProps(schema, component, key)}
-    {schema}
-    {errors}>
-    <slot />
-  </svelte:component>
-{/if}
+<svelte:component this={cmp} {...props} {schema} {errors}>
+  <slot />
+</svelte:component>
 
 <script>
 import {getProps, getComponent} from '../helpers.js'
@@ -15,5 +9,6 @@ export let errors
 export let schema
 export let component
 
-const key = 'wrapper'
+const cmp = getComponent(schema, component, 'wrapper')
+const props = getProps(schema, component, 'wrapper')
 </script>

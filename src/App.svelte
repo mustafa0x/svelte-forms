@@ -35,6 +35,11 @@
   <textarea cols=30 rows=10 readonly>{data}</textarea>
 {/if}
 
+<label>
+  Schema
+  <textarea class=block cols=30 rows=10 on:input={e => {schema = JSON.parse(e.target.value); value = null} }/>
+</label>
+
 <script>
 import Ajv from 'ajv'
 import { Form, components } from './forms'
@@ -47,7 +52,7 @@ import * as array from './samples/array.js'
 const samples = [
     ['Simple', simple],
     ['Single', single],
-    ['Array', array]
+    ['Array', array],
 ]
 
 const ajv = new Ajv({schemaId: 'auto', allErrors: true, coerceTypes: true})

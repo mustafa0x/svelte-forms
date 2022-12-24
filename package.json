@@ -1,4 +1,6 @@
 {
+  "name": "svelte-forms",
+  "version": "0.0.2",
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "2.0.1",
     "autoprefixer": "^10.4.13",
